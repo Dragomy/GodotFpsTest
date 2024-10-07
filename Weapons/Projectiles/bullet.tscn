@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1artwran85i6"]
+
+[ext_resource type="Script" path="res://Weapons/Projectiles/bullet.gd" id="1_ps6aj"]
+[ext_resource type="FontFile" uid="uid://b0e7qj142jgjl" path="res://InterVariable-Italic.ttf" id="2_elcch"]
+[ext_resource type="Texture2D" uid="uid://bk7qvkmtbdewp" path="res://Textures/bullet.png" id="2_nvtup"]
+[ext_resource type="Texture2D" uid="uid://ckwdvorf78mke" path="res://Textures/bullet_impact.png" id="4_x5os2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4igfk"]
+lightmap_size_hint = Vector2i(9, 11)
+size = Vector3(0.05, 0.05, 1)
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_ps6aj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_4igfk")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Hit" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0229307)
+billboard = 1
+text = "-100"
+font = ExtResource("2_elcch")
+font_size = 64
+outline_size = 60
+uppercase = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.5
+
+[node name="BulletSprite" type="Sprite3D" parent="."]
+transform = Transform3D(-0.170209, 0, 0.985408, 0, 1, 0, -0.985408, 0, -0.170209, 0, 0, 0)
+gi_mode = 2
+texture_filter = 2
+texture = ExtResource("2_nvtup")
+
+[node name="BulletHole" type="Sprite3D" parent="."]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, -0.503369)
+pixel_size = 0.047
+texture_filter = 2
+texture = ExtResource("4_x5os2")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

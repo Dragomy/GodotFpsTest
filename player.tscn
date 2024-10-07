@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://vcfeo6kpvfpx"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_4exlr"]
+[ext_resource type="PackedScene" uid="uid://cwq7kemnouu66" path="res://Weapons/gun.tscn" id="2_vmsvm"]
+[ext_resource type="Material" uid="uid://djuxxavgti0d3" path="res://Materials/pallettelock.tres" id="2_vy065"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5suy4"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d6t0g"]
+radius = 0.4
+height = 1.8
+radial_segments = 8
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+script = ExtResource("1_4exlr")
+
+[node name="Camera" type="Camera3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77442, 0)
+
+[node name="Gun" parent="Camera" instance=ExtResource("2_vmsvm")]
+transform = Transform3D(0.972873, 0.23134, 0, -0.23134, 0.972873, 0, 0, 0, 1, 0.334971, -0.319549, -0.784976)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("2_vy065")
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+
+[node name="MainCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5suy4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_d6t0g")
+
+[node name="Raycast" type="Node3D" parent="."]
+
+[node name="Left" type="RayCast3D" parent="Raycast"]
+transform = Transform3D(-2.18557e-08, -0.5, 2.18557e-08, 1.91069e-15, 2.18557e-08, 0.5, -0.5, 2.18557e-08, 9.55343e-16, 0, 0.0903527, 0)
+
+[node name="Right" type="RayCast3D" parent="Raycast"]
+transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, 0, 0.0903527, 0)
+
+[node name="Down" type="RayCast3D" parent="Raycast"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
