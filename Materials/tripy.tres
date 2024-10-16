@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4ro1bbffjqjt"]
+
+[ext_resource type="Texture2D" uid="uid://dvnh6goliml4s" path="res://Textures/1406905-vertical-trippy-backgrounds-2339x1656-for-iphone-6-3024873934.jpg" id="1_4pw8k"]
+
+[resource]
+albedo_texture = ExtResource("1_4pw8k")

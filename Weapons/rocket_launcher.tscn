@@ -1,23 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwq7kemnouu66"]
+[gd_scene load_steps=12 format=3 uid="uid://dp0ded1f5nmf5"]
 
-[ext_resource type="Script" path="res://Weapons/smg.gd" id="1_fsiiq"]
-[ext_resource type="Texture2D" uid="uid://bk7qvkmtbdewp" path="res://Textures/bullet.png" id="1_ng3d7"]
-[ext_resource type="ArrayMesh" uid="uid://csfcnem5lw028" path="res://Objects/smg.obj" id="1_s3lhl"]
-[ext_resource type="Texture2D" uid="uid://c0isn0aqwup7l" path="res://Objects/Smg.png" id="4_xahpn"]
+[ext_resource type="Texture2D" uid="uid://jvw1sdbvwd3j" path="res://Objects/texture.png" id="1_2igaa"]
+[ext_resource type="ArrayMesh" uid="uid://duoqxbn3bijgl" path="res://Objects/rocketlauncher.obj" id="2_5kywj"]
+[ext_resource type="Texture2D" uid="uid://bk7qvkmtbdewp" path="res://Textures/bullet.png" id="3_o7jf3"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hh70l"]
-fractal_type = 3
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_808lv"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pjyii"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xgdba"]
 width = 128
 height = 128
-noise = SubResource("FastNoiseLite_hh70l")
+noise = SubResource("FastNoiseLite_808lv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gje8a"]
-albedo_texture = ExtResource("4_xahpn")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wtaa"]
+albedo_texture = ExtResource("1_2igaa")
 normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_pjyii")
-clearcoat_enabled = true
+normal_texture = SubResource("NoiseTexture2D_xgdba")
 texture_filter = 2
 
 [sub_resource type="Animation" id="Animation_2p42g"]
@@ -58,32 +55,31 @@ _data = {
 "shoot": SubResource("Animation_0d578")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6inml"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28s6j"]
 transparency = 1
-albedo_texture = ExtResource("1_ng3d7")
+albedo_texture = ExtResource("3_o7jf3")
 texture_filter = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0tbh0"]
-material = SubResource("StandardMaterial3D_6inml")
+[sub_resource type="PlaneMesh" id="PlaneMesh_d0pv1"]
+material = SubResource("StandardMaterial3D_28s6j")
 flip_faces = true
 size = Vector2(0.2, 0.2)
 orientation = 2
 
-[node name="SMG" type="Node3D"]
-script = ExtResource("1_fsiiq")
+[node name="RocketLauncher" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0
 
-[node name="Smg" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-0.635074, 0.291806, -0.0391115, 0.292263, 0.636068, -4.41304e-08, 0.0355394, -0.0163298, -0.698906, -0.0902861, -0.171917, -0.312577)
-material_override = SubResource("StandardMaterial3D_gje8a")
-cast_shadow = 0
-mesh = ExtResource("1_s3lhl")
+[node name="Rocketlauncher" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6wtaa")
+mesh = ExtResource("2_5kywj")
 skeleton = NodePath("../..")
 
-[node name="Label3D" type="Label3D" parent="MeshInstance3D/Smg"]
-transform = Transform3D(-0.268028, 0.0323567, 0.130821, 0.00251551, 0.292375, -0.0671607, -0.13474, -0.0589061, -0.261487, 0.126069, 0.290633, -0.0358645)
+[node name="Label3D" type="Label3D" parent="MeshInstance3D/Rocketlauncher"]
+transform = Transform3D(0.176222, 0.0670718, -0.0924518, -0.0767346, 0.195427, -0.00448462, 0.084604, 0.0375453, 0.188501, 0.398949, 0.0497906, -1.01789)
+visible = false
 texture_filter = 2
 text = "100"
 
@@ -103,7 +99,7 @@ amount = 1
 lifetime = 42.1
 one_shot = true
 explosiveness = 1.0
-mesh = SubResource("PlaneMesh_0tbh0")
+mesh = SubResource("PlaneMesh_d0pv1")
 spread = 180.0
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0

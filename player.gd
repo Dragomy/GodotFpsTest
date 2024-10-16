@@ -90,6 +90,15 @@ func _physics_process(delta):
 func handle_weapon():
 	active_gun[array_index].shoot()
 	active_gun[array_index].reload()
+	
+	if Input.is_action_just_pressed("weapon 1"):
+		active_gun[array_index].hide()
+		array_index = 0
+		active_gun[array_index].show()
+	elif Input.is_action_just_pressed("weapon 2"):
+		active_gun[array_index].hide()
+		array_index = 1
+		active_gun[array_index].show()
 
 #- Respawn ----------
 func respawn():
