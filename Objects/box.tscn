@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dksdv8u680oer"]
+[gd_scene load_steps=6 format=3 uid="uid://dksdv8u680oer"]
 
+[ext_resource type="Script" path="res://Objects/box.gd" id="1_7hdn3"]
 [ext_resource type="Texture2D" uid="uid://dqq3uawq2g1x5" path="res://Textures/crate.png" id="1_qv73s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uggw3"]
@@ -7,17 +8,25 @@ albedo_texture = ExtResource("1_qv73s")
 uv1_offset = Vector3(0.5, -0.5, 0.5)
 uv1_triplanar = true
 texture_filter = 2
+grow_amount = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_wuabq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q30wg"]
 
-[node name="Crate" type="StaticBody3D"]
+[node name="box" type="RigidBody3D" groups=["destructable"]]
+script = ExtResource("1_7hdn3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 material_override = SubResource("StandardMaterial3D_uggw3")
 mesh = SubResource("BoxMesh_wuabq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_q30wg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

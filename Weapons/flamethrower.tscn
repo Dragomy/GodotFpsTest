@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=3 uid="uid://crmpdl7ojm7q6"]
+
+[ext_resource type="Script" path="res://Weapons/flamethrower.gd" id="1_clr1u"]
+[ext_resource type="Texture2D" uid="uid://beogmrm066m0h" path="res://Objects/Flamethrower.png" id="1_l0txw"]
+[ext_resource type="ArrayMesh" uid="uid://cq7k0xbljefu3" path="res://Objects/flamethrower.obj" id="2_xjpec"]
+[ext_resource type="Texture2D" uid="uid://c57yq6m72dnup" path="res://Objects/particle_sprite_smoke.webp" id="3_a0m54"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3syq1"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ec8eo"]
+noise = SubResource("FastNoiseLite_3syq1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbt6q"]
+albedo_texture = ExtResource("1_l0txw")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ec8eo")
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+texture_filter = 2
+
+[sub_resource type="Animation" id="Animation_2p42g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(36.7584),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0d578"]
+resource_name = "shoot"
+length = 0.08
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.08),
+"transitions": PackedFloat32Array(1, 2.54912, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.01), Vector3(0, 0.003, 0.03), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjspd"]
+_data = {
+"RESET": SubResource("Animation_2p42g"),
+"shoot": SubResource("Animation_0d578")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycr2h"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 15.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_noise_strength = 14.47
+turbulence_noise_scale = 8.535
+turbulence_noise_speed = Vector3(4.395, 4.58, 2.835)
+turbulence_noise_speed_random = 1.42
+turbulence_influence_min = 0.046
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="Gradient" id="Gradient_givbd"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_na7qv"]
+gradient = SubResource("Gradient_givbd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqa53"]
+transparency = 4
+shading_mode = 0
+albedo_texture = ExtResource("3_a0m54")
+detail_enabled = true
+detail_albedo = SubResource("GradientTexture2D_na7qv")
+uv1_triplanar_sharpness = 7.99999
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+grow_amount = 11.027
+
+[sub_resource type="QuadMesh" id="QuadMesh_yh4i8"]
+material = SubResource("StandardMaterial3D_vqa53")
+size = Vector2(0.5, 0.5)
+
+[node name="flamethrower" type="Node3D"]
+script = ExtResource("1_clr1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+
+[node name="Flamethrower" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0.0921535, 0)
+material_override = SubResource("StandardMaterial3D_fbt6q")
+cast_shadow = 0
+mesh = ExtResource("2_xjpec")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D/Flamethrower"]
+transform = Transform3D(-0.35, -2.22511e-08, 4.79359e-08, 0, 0.317465, 0.147363, -5.28485e-08, 0.147363, -0.317465, 8.01413e-05, 0.122958, -0.0337815)
+texture_filter = 2
+text = "100%"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xjspd")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.015847, 0.99976, -0.0151305, -1.32292e-09, -0.0151324, -0.999885, -0.999874, 0.0158452, -0.000239802, -0.0565596, 0.024338, -1.04244)
+cast_shadow = 0
+emitting = false
+amount = 128
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ycr2h")
+draw_pass_1 = SubResource("QuadMesh_yh4i8")
+
+[node name="BulletSpawn" type="RayCast3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_db = -8.44

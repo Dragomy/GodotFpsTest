@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwq7kemnouu66"]
+
+[ext_resource type="Script" path="res://Weapons/smg.gd" id="1_fsiiq"]
+[ext_resource type="Texture2D" uid="uid://bk7qvkmtbdewp" path="res://Textures/bullet.png" id="1_ng3d7"]
+[ext_resource type="ArrayMesh" uid="uid://csfcnem5lw028" path="res://Objects/smg.obj" id="1_s3lhl"]
+[ext_resource type="Texture2D" uid="uid://c0isn0aqwup7l" path="res://Objects/Smg.png" id="4_xahpn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hh70l"]
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y8aep"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_hh70l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gje8a"]
+albedo_texture = ExtResource("4_xahpn")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_y8aep")
+clearcoat_enabled = true
+texture_filter = 2
+
+[sub_resource type="Animation" id="Animation_2p42g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(36.7584),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0d578"]
+resource_name = "shoot"
+length = 0.08
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.08),
+"transitions": PackedFloat32Array(1, 2.54912, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.01), Vector3(0, 0.003, 0.03), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjspd"]
+_data = {
+"RESET": SubResource("Animation_2p42g"),
+"shoot": SubResource("Animation_0d578")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28s6j"]
+transparency = 1
+albedo_texture = ExtResource("1_ng3d7")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0tbh0"]
+material = SubResource("StandardMaterial3D_28s6j")
+flip_faces = true
+size = Vector2(0.2, 0.2)
+orientation = 2
+
+[node name="SMG" type="Node3D"]
+script = ExtResource("1_fsiiq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+
+[node name="Smg" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.635074, 0.291806, -0.0391115, 0.292263, 0.636068, -4.41304e-08, 0.0355394, -0.0163298, -0.698906, -0.0902861, -0.171917, -0.312577)
+material_override = SubResource("StandardMaterial3D_gje8a")
+cast_shadow = 0
+mesh = ExtResource("1_s3lhl")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D/Smg"]
+transform = Transform3D(-0.268028, 0.0323567, 0.130821, 0.00251551, 0.292375, -0.0671607, -0.13474, -0.0589061, -0.261487, 0.126069, 0.290633, -0.0358645)
+texture_filter = 2
+text = "100"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xjspd")
+}
+
+[node name="BulletSpawn" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190111, 0.0329728, -0.670537)
+target_position = Vector3(0, 0, -1)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="BulletSpawn"]
+transform = Transform3D(0.0087265, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.0087265, -0.0600987, 0.0192865, 0.50445)
+emitting = false
+amount = 1
+lifetime = 42.1
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("PlaneMesh_0tbh0")
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_db = -8.44

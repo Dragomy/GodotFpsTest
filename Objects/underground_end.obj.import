@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ckci802uoan7m"
+path="res://.godot/imported/underground_end.obj-e49f03f7ffbd1cc09d049b31894df755.mesh"
+
+[deps]
+
+files=["res://.godot/imported/underground_end.obj-e49f03f7ffbd1cc09d049b31894df755.mesh"]
+
+source_file="res://Objects/underground_end.obj"
+dest_files=["res://.godot/imported/underground_end.obj-e49f03f7ffbd1cc09d049b31894df755.mesh", "res://.godot/imported/underground_end.obj-e49f03f7ffbd1cc09d049b31894df755.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
