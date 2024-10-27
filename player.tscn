@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://vcfeo6kpvfpx"]
+[gd_scene load_steps=8 format=3 uid="uid://vcfeo6kpvfpx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4exlr"]
 [ext_resource type="PackedScene" uid="uid://cwq7kemnouu66" path="res://Weapons/smg.tscn" id="2_vmsvm"]
 [ext_resource type="Material" uid="uid://djuxxavgti0d3" path="res://Materials/pallettelock.tres" id="2_vy065"]
 [ext_resource type="PackedScene" uid="uid://crmpdl7ojm7q6" path="res://Weapons/flamethrower.tscn" id="3_106xx"]
+[ext_resource type="PackedScene" uid="uid://y5fnuorw8hhh" path="res://Weapons/sniper.tscn" id="4_sf8u5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5suy4"]
 radius = 0.4
@@ -30,6 +31,10 @@ transform = Transform3D(0.955921, -0.293623, 0, 0.293623, 0.955921, 0, 0, 0, 1, 
 
 [node name="flamethrower" parent="Camera/gun" instance=ExtResource("3_106xx")]
 transform = Transform3D(0.967753, -0.2519, 0, 0.2519, 0.967753, 0, 0, 0, 1, 0.334376, 1.26039, -0.663895)
+visible = false
+
+[node name="sniper" parent="Camera/gun" instance=ExtResource("4_sf8u5")]
+transform = Transform3D(-0.999929, 0, 0.0119551, 0, 1, 0, -0.0119551, 0, -0.999929, 0.406873, 1.27474, -1.25267)
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

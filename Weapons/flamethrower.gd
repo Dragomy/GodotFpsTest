@@ -29,5 +29,8 @@ func shoot():
 
 func reload():
 	if Input.is_action_pressed("reload"):
-		ammo = 100
-		ammo_count.text = str(ammo) + "%"
+		if ammo <= 100:
+			ammo_count.text = str(ammo) + "%"
+			ammo += 1
+			await get_tree().create_timer(1).timeout
+			

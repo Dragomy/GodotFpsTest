@@ -37,7 +37,8 @@ var runspeed = BASE_SPEED * 2
 #- Weapons ----------
 @onready var smg = $Camera/gun/smg
 @onready var flamethrower = $Camera/gun/flamethrower
-@onready var active_gun =[smg,flamethrower] 
+@onready var sniper = $Camera/gun/sniper
+@onready var active_gun =[smg,flamethrower,sniper] 
 var array_index = 0
 
 
@@ -64,12 +65,12 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			if array_index+1 < active_gun.size():
 				active_gun[array_index].hide()
-				array_index += 1
+				array_index += 0.1
 				active_gun[array_index].show()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			if array_index-1 >= 0:
 				active_gun[array_index].hide()
-				array_index -= 1
+				array_index -= 0.1
 				active_gun[array_index].show()
 
 func _physics_process(delta):
@@ -95,6 +96,8 @@ func _physics_process(delta):
 	#- Camera ----------
 	tiltCamera()
 	wobbleCamera(delta,current_speed)
+	
+	print(array_index)
 	
 	#- MoveAndSlide ----------
 	move_and_slide()

@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvw1sdbvwd3j"
-path.s3tc="res://.godot/imported/texture.png-11190ac38656a4ecd49ff2950f608154.s3tc.ctex"
+uid="uid://dvh1ry0v7rsxq"
+path="res://.godot/imported/sniper.png-4a61331868213bef072af972f63ab8e0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/texture.png"
-dest_files=["res://.godot/imported/texture.png-11190ac38656a4ecd49ff2950f608154.s3tc.ctex"]
+source_file="res://Objects/sniper.png"
+dest_files=["res://.godot/imported/sniper.png-4a61331868213bef072af972f63ab8e0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
