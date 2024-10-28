@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://vcfeo6kpvfpx"]
+[gd_scene load_steps=9 format=3 uid="uid://vcfeo6kpvfpx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4exlr"]
 [ext_resource type="PackedScene" uid="uid://cwq7kemnouu66" path="res://Weapons/smg.tscn" id="2_vmsvm"]
 [ext_resource type="Material" uid="uid://djuxxavgti0d3" path="res://Materials/pallettelock.tres" id="2_vy065"]
 [ext_resource type="PackedScene" uid="uid://crmpdl7ojm7q6" path="res://Weapons/flamethrower.tscn" id="3_106xx"]
 [ext_resource type="PackedScene" uid="uid://y5fnuorw8hhh" path="res://Weapons/sniper.tscn" id="4_sf8u5"]
+[ext_resource type="PackedScene" uid="uid://bckg2r3wdk8y8" path="res://Weapons/cigarettes.tscn" id="5_cdtap"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5suy4"]
 radius = 0.4
@@ -36,6 +37,9 @@ visible = false
 [node name="sniper" parent="Camera/gun" instance=ExtResource("4_sf8u5")]
 transform = Transform3D(-0.974762, 0.22325, 8.74228e-08, 0.22325, 0.974761, 0, -8.52164e-08, 1.95171e-08, -1, 0.406873, 1.27474, -1.25267)
 visible = false
+
+[node name="cigarettes" parent="Camera/gun" instance=ExtResource("5_cdtap")]
+transform = Transform3D(-0.67008, 0.387184, 0.63331, 0.250855, 0.921107, -0.297714, -0.698616, -0.0406234, -0.714343, -0.479205, 1.24891, -0.571659)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
