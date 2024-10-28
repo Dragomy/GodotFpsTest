@@ -13,24 +13,44 @@ var ammo = 100
 
 @onready var ammo_count = $MeshInstance3D/Flamethrower/Label3D
 
+var red = Color(255,0,0)
+var orange = Color(255,0,255)
+var white = Color(255,255,255)
+
 func shoot():
-	if Input.is_action_pressed("shoot") and ammo > 0:
+	if Input.is_action_pressed("shoot") and ammo >= 4:
 		if !gun_anim.is_playing():
 			gun_anim.play("shoot")
 			gun_sound.play()
 			gun_bullets.restart()
 			
-			ammo -= 1
+			ammo -= 4
 			ammo_count.text = str(ammo) + "%"
+			if ammo <= 25:
+				ammo_count.modulate = red
+			elif ammo <= 50:
+				ammo_count.modulate = orange
+			elif ammo >= 50:
+				ammo_count.modulate = white
 			
 			if gun_ray.is_colliding():
 				if gun_ray.get_collider().is_in_group("destructable"):
 					gun_ray.get_collider().hit()
 
+func aim():
+	pass
+
+
 func reload():
 	if Input.is_action_pressed("reload"):
-		if ammo <= 100:
+		while ammo <= 100:
 			ammo_count.text = str(ammo) + "%"
+			if ammo <= 25:
+				ammo_count.modulate = red
+			elif ammo <= 50:
+				ammo_count.modulate = orange
+			elif ammo >= 50:
+				ammo_count.modulate = white
 			ammo += 1
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(0.1).timeout
 			

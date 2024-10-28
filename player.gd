@@ -96,8 +96,7 @@ func _physics_process(delta):
 	#- Camera ----------
 	tiltCamera()
 	wobbleCamera(delta,current_speed)
-	
-	print(array_index)
+	peak()
 	
 	#- MoveAndSlide ----------
 	move_and_slide()
@@ -107,6 +106,7 @@ func _physics_process(delta):
 func handle_weapon():
 	active_gun[array_index].shoot()
 	active_gun[array_index].reload()
+	active_gun[array_index].aim()
 	
 	if Input.is_action_just_pressed("weapon 1"):
 		active_gun[array_index].hide()
@@ -211,3 +211,12 @@ func wobbleCamera(delta: float, player_speed: float):
 			camera.position.y = base_camera_height
 			# Reset wobble time
 			wobble_time = 0.0
+
+func peak():
+	if tilt_on:
+		if Input.is_action_pressed("peak_left"):
+			camera.rotation_degrees.z = tilt_angle * 8
+		elif Input.is_action_pressed("peak_right"):
+			camera.rotation_degrees.z = -tilt_angle * 8
+		else:
+			camera.rotation_degrees.z = 0

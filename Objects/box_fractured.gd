@@ -2,7 +2,7 @@ extends Node3D
 
 func _ready():
 	shatter()  
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 	queue_free()
 
 func shatter():

@@ -34,7 +34,7 @@ transform = Transform3D(0.967753, -0.2519, 0, 0.2519, 0.967753, 0, 0, 0, 1, 0.33
 visible = false
 
 [node name="sniper" parent="Camera/gun" instance=ExtResource("4_sf8u5")]
-transform = Transform3D(-0.999929, 0, 0.0119551, 0, 1, 0, -0.0119551, 0, -0.999929, 0.406873, 1.27474, -1.25267)
+transform = Transform3D(-0.974762, 0.22325, 8.74228e-08, 0.22325, 0.974761, 0, -8.52164e-08, 1.95171e-08, -1, 0.406873, 1.27474, -1.25267)
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

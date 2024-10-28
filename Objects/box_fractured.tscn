@@ -572,6 +572,7 @@ data = PackedVector3Array(-0.0742, 0.0781, 0.3576, -0.1992, -0.2705, 0.1979, -0.
 script = ExtResource("2_v48dh")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell" type="MeshInstance3D" parent="RigidBody3D"]
@@ -585,6 +586,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.393983, 0.808933, 0.158534)
 shape = SubResource("ConcavePolygonShape3D_whqag")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_001" type="MeshInstance3D" parent="RigidBody3D2"]
@@ -598,6 +600,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311884, 0.952345, -0.238414
 shape = SubResource("ConcavePolygonShape3D_keinu")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_002" type="MeshInstance3D" parent="RigidBody3D3"]
@@ -612,6 +615,7 @@ shape = SubResource("ConcavePolygonShape3D_hw2q3")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495933, 0.0252558, 0.497376)
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_003" type="MeshInstance3D" parent="RigidBody3D4"]
@@ -625,6 +629,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0351548, 0.0164454, -0.965
 shape = SubResource("ConcavePolygonShape3D_epiok")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_004" type="MeshInstance3D" parent="RigidBody3D5"]
@@ -638,6 +643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299281, 0.951623, 0.426703
 shape = SubResource("ConcavePolygonShape3D_yloig")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_005" type="MeshInstance3D" parent="RigidBody3D6"]
@@ -651,6 +657,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.443087, 0.841254, -0.39447
 shape = SubResource("ConcavePolygonShape3D_w43on")
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_006" type="MeshInstance3D" parent="RigidBody3D7"]
@@ -665,6 +672,7 @@ shape = SubResource("ConcavePolygonShape3D_7jcss")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277483, 0.285838, 0.349456)
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_007" type="MeshInstance3D" parent="RigidBody3D8"]
@@ -678,6 +686,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0796775, -0.207916, -0.649
 shape = SubResource("ConcavePolygonShape3D_lb252")
 
 [node name="RigidBody3D9" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_008" type="MeshInstance3D" parent="RigidBody3D9"]
@@ -691,6 +700,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234716, 0.791582, 0.236293)
 shape = SubResource("ConcavePolygonShape3D_trple")
 
 [node name="RigidBody3D10" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_009" type="MeshInstance3D" parent="RigidBody3D10"]
@@ -704,6 +714,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259959, 0.647445, -0.138827
 shape = SubResource("ConcavePolygonShape3D_7e6o6")
 
 [node name="RigidBody3D11" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_010" type="MeshInstance3D" parent="RigidBody3D11"]
@@ -717,6 +728,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200126, 0.746461, 0.245836
 shape = SubResource("ConcavePolygonShape3D_lk70t")
 
 [node name="RigidBody3D12" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_011" type="MeshInstance3D" parent="RigidBody3D12"]
@@ -730,6 +742,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202606, 0.819002, -0.25326
 shape = SubResource("ConcavePolygonShape3D_ysufa")
 
 [node name="RigidBody3D13" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_012" type="MeshInstance3D" parent="RigidBody3D13"]
@@ -743,6 +756,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204756, 0.283796, 0.260921)
 shape = SubResource("ConcavePolygonShape3D_nqt4x")
 
 [node name="RigidBody3D14" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_013" type="MeshInstance3D" parent="RigidBody3D14"]
@@ -756,6 +770,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091048, 0.153929, -0.233649
 shape = SubResource("ConcavePolygonShape3D_fxbtf")
 
 [node name="RigidBody3D15" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_014" type="MeshInstance3D" parent="RigidBody3D15"]
@@ -769,6 +784,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333938, 0.165446, 0.150751
 shape = SubResource("ConcavePolygonShape3D_s6wug")
 
 [node name="RigidBody3D16" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.1
 
 [node name="Box_cell_015" type="MeshInstance3D" parent="RigidBody3D16"]

@@ -30,6 +30,11 @@ func shoot():
 			var world_scene = get_tree().root.get_child(0)
 			world_scene.add_child(instance)
 
+
+func aim():
+	pass
+
+
 func reload():
 	if Input.is_action_pressed("reload"):
 		ammo = 100
