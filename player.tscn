@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vcfeo6kpvfpx"]
+[gd_scene load_steps=13 format=3 uid="uid://vcfeo6kpvfpx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4exlr"]
 [ext_resource type="PackedScene" uid="uid://cwq7kemnouu66" path="res://Weapons/smg.tscn" id="2_vmsvm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crmpdl7ojm7q6" path="res://Weapons/flamethrower.tscn" id="3_106xx"]
 [ext_resource type="PackedScene" uid="uid://y5fnuorw8hhh" path="res://Weapons/sniper.tscn" id="4_sf8u5"]
 [ext_resource type="PackedScene" uid="uid://bckg2r3wdk8y8" path="res://Weapons/cigarettes.tscn" id="5_cdtap"]
+[ext_resource type="PackedScene" uid="uid://dticw53s1qjuf" path="res://Weapons/beer.tscn" id="7_oli80"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5suy4"]
 radius = 0.4
@@ -15,6 +16,67 @@ height = 1.8
 radius = 0.4
 height = 1.8
 radial_segments = 8
+
+[sub_resource type="Animation" id="Animation_2tu85"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/gun/sniper/beer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.125543, -2.49533, 0.169353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/gun/sniper/beer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.772511, -0.29071, -0.572241), Vector3(0.773664, -0.285676, -0.572241)]
+}
+
+[sub_resource type="Animation" id="Animation_pdqkm"]
+resource_name = "drink_beer"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/gun/sniper/beer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.125543, -2.49533, 0.169353), Vector3(1.34929, -0.617615, 1.91294), Vector3(1.15645, 0.179893, 2.70857), Vector3(0.125543, -2.49533, 0.169353)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/gun/sniper/beer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.774068, -0.283909, -0.572241), Vector3(0.852582, 0.0589017, -0.572241), Vector3(0.876373, 0.162779, -0.572241), Vector3(0.774068, -0.283909, -0.572241)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0ie6"]
+_data = {
+"RESET": SubResource("Animation_2tu85"),
+"drink_beer": SubResource("Animation_pdqkm")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -34,12 +96,15 @@ transform = Transform3D(0.955921, -0.293623, 0, 0.293623, 0.955921, 0, 0, 0, 1, 
 transform = Transform3D(0.967753, -0.2519, 0, 0.2519, 0.967753, 0, 0, 0, 1, 0.334376, 1.26039, -0.663895)
 visible = false
 
+[node name="cigarettes" parent="Camera/gun/flamethrower" instance=ExtResource("5_cdtap")]
+transform = Transform3D(-0.977057, -0.000518396, 0.212981, -0.053666, 0.96833, -0.243838, -0.20611, -0.249673, -0.946141, -0.649642, 0.205964, 0.0836626)
+
 [node name="sniper" parent="Camera/gun" instance=ExtResource("4_sf8u5")]
 transform = Transform3D(-0.974762, 0.22325, 8.74228e-08, 0.22325, 0.974761, 0, -8.52164e-08, 1.95171e-08, -1, 0.406873, 1.27474, -1.25267)
 visible = false
 
-[node name="cigarettes" parent="Camera/gun" instance=ExtResource("5_cdtap")]
-transform = Transform3D(-0.67008, 0.387184, 0.63331, 0.250855, 0.921107, -0.297714, -0.698616, -0.0406234, -0.714343, -0.479205, 1.24891, -0.571659)
+[node name="beer" parent="Camera/gun/sniper" instance=ExtResource("7_oli80")]
+transform = Transform3D(-0.799627, 0.0602303, -0.597467, 0.167218, 0.977937, -0.125213, 0.576743, -0.200032, -0.792057, 0.772511, -0.29071, -0.572241)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -68,3 +133,8 @@ transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, 
 
 [node name="Down" type="RayCast3D" parent="Raycast"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0ie6")
+}

@@ -13,6 +13,7 @@ config_version=5
 config/name="2024_10_01"
 run/main_scene="res://sandbox.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [display]
