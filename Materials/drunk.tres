@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8x2nni3mh7qh"]
+
+[ext_resource type="Shader" path="res://test.gdshader" id="1_ql3uq"]
+
+[resource]
+shader = ExtResource("1_ql3uq")
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 0.96
+shader_parameter/red_shift = 7.0
+shader_parameter/blue_shift = 7.0
+shader_parameter/green_shift = 10.0
+shader_parameter/red_mult = 1.0
+shader_parameter/shake_intensity = 0.3

@@ -45,6 +45,8 @@ var array_index = 0
 #- Input ----------
 var mouse_sensitivity = 0.006
 
+@onready var drunklayer = $CanvasLayer2/Drunk
+
 
 #- StandartFunctions ----------
 func _ready():
@@ -52,6 +54,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Store the initial camera height
 	base_camera_height = camera.position.y  
+	drunklayer.hide()
 
 func _unhandled_input(event):
 	# Handle Mouse Movement
@@ -111,6 +114,10 @@ func handle_weapon():
 	var origin = runspeed
 	if Input.is_action_just_pressed("weapon 1") and active_gun[array_index] == sniper:
 		item_anim.play("drink_beer")
+		await get_tree().create_timer(1).timeout
+		drunklayer.show()
+		await get_tree().create_timer(3).timeout
+		drunklayer.hide()
 
 
 #- Respawn ----------
