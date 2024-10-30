@@ -108,7 +108,8 @@ func handle_weapon():
 	active_gun[array_index].reload()
 	active_gun[array_index].aim()
 	
-	if Input.is_action_just_pressed("weapon 1"):
+	var origin = runspeed
+	if Input.is_action_just_pressed("weapon 1") and active_gun[array_index] == sniper:
 		item_anim.play("drink_beer")
 
 

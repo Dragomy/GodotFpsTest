@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://crmpdl7ojm7q6"]
+[gd_scene load_steps=21 format=4 uid="uid://crmpdl7ojm7q6"]
 
 [ext_resource type="Script" path="res://Weapons/flamethrower.gd" id="1_clr1u"]
 [ext_resource type="Texture2D" uid="uid://beogmrm066m0h" path="res://Objects/Flamethrower.png" id="1_l0txw"]
@@ -90,13 +90,13 @@ turbulence_influence_max = 1.0
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
 
-[sub_resource type="Gradient" id="Gradient_givbd"]
+[sub_resource type="Gradient" id="Gradient_4xk20"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_na7qv"]
-gradient = SubResource("Gradient_givbd")
+gradient = SubResource("Gradient_4xk20")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqa53"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q550o"]
 transparency = 4
 shading_mode = 0
 albedo_texture = ExtResource("3_a0m54")
@@ -111,8 +111,41 @@ particles_anim_loop = true
 grow_amount = 11.027
 
 [sub_resource type="QuadMesh" id="QuadMesh_yh4i8"]
-material = SubResource("StandardMaterial3D_vqa53")
+material = SubResource("StandardMaterial3D_q550o")
 size = Vector2(0.5, 0.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4wf8j"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 15.0
+initial_velocity_max = 0.95
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_noise_strength = 14.47
+turbulence_noise_scale = 8.535
+turbulence_noise_speed = Vector3(4.395, 4.58, 2.835)
+turbulence_noise_speed_random = 1.42
+turbulence_influence_min = 0.046
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ny3sb"]
+transparency = 4
+shading_mode = 0
+albedo_texture = ExtResource("3_a0m54")
+uv1_triplanar_sharpness = 7.99999
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+grow_amount = 11.027
+
+[sub_resource type="QuadMesh" id="QuadMesh_slxau"]
+material = SubResource("StandardMaterial3D_ny3sb")
+size = Vector2(0.1, 0.1)
 
 [node name="flamethrower" type="Node3D"]
 script = ExtResource("1_clr1u")
@@ -157,3 +190,45 @@ target_position = Vector3(0, 0, -1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 max_db = -8.44
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0174846, 0.00387523, 0.0983833, 0.0983602, -0.00380038, 0.0176302, 0.00442215, 0.0998526, -0.0031472, -0.137652, 0.201911, 0.156865)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0174846, 0.00387523, 0.0983833, 0.0983602, -0.00380038, 0.0176302, 0.00442215, 0.0998526, -0.0031472, -0.148447, 0.201911, 0.032669)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0174846, 0.00387523, 0.0983833, 0.0983602, -0.00380038, 0.0176302, 0.00442215, 0.0998526, -0.0031472, -0.177942, 0.190763, -0.0771662)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0174846, 0.00387523, 0.0983833, 0.0983602, -0.00380038, 0.0176302, 0.00442215, 0.0998526, -0.0031472, 0.151525, 0.201911, 0.156865)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.00297181, 0.00328037, 0.099902, 0.099858, -0.00432428, 0.0031125, 0.00442214, 0.0998526, -0.0031472, 0.15793, 0.201911, 0.0463754)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.0230798, 0.00204395, 0.0972787, 0.0971996, -0.00502817, -0.0229554, 0.00442214, 0.0998526, -0.0031472, 0.186259, 0.195123, -0.0701608)
+visible = false
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_4wf8j")
+draw_pass_1 = SubResource("QuadMesh_slxau")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vcfeo6kpvfpx"]
+[gd_scene load_steps=22 format=4 uid="uid://vcfeo6kpvfpx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_4exlr"]
 [ext_resource type="PackedScene" uid="uid://cwq7kemnouu66" path="res://Weapons/smg.tscn" id="2_vmsvm"]
@@ -7,6 +7,62 @@
 [ext_resource type="PackedScene" uid="uid://y5fnuorw8hhh" path="res://Weapons/sniper.tscn" id="4_sf8u5"]
 [ext_resource type="PackedScene" uid="uid://bckg2r3wdk8y8" path="res://Weapons/cigarettes.tscn" id="5_cdtap"]
 [ext_resource type="PackedScene" uid="uid://dticw53s1qjuf" path="res://Weapons/beer.tscn" id="7_oli80"]
+[ext_resource type="Texture2D" uid="uid://dpk783bqqf5xg" path="res://Objects/cigarette.png" id="8_h0kui"]
+[ext_resource type="ArrayMesh" uid="uid://cye183xe4cy3r" path="res://Objects/cigarrette.obj" id="9_es6qe"]
+[ext_resource type="Texture2D" uid="uid://c57yq6m72dnup" path="res://Objects/particle_sprite_smoke.webp" id="9_xaf4a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b0cm"]
+albedo_texture = ExtResource("8_h0kui")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdkxv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lm6gd"]
+_surfaces = [{
+"aabb": AABB(-0.0564991, -0.155, 0.0117393, 0.112999, 0.81, 0.0969948),
+"attribute_data": PackedByteArray("0DdQP82AzDvUb1Q/jcAMPcz/Sz+NwAw9kP8PP8D/Pz8A//8+wP8/P5D/Dz8AAAAAAP//PgAAAADUb1Q/ncwcPtA3UD+6mDk+zP9LP53MHD7QN1A/APF/PaD+nz7A/z8/AP1/PsD/Pz+g/p8+AAAAAAD9fz4AAAAA0DdQPwD5/z3Ixkc/APF/PQDxfz3A/z8/AAAAAMD/Pz8A8X89AAAAAAAAAAAAAAAAyMZHPwD5/z3Ej0M/jcAMPeD+3z7A/z8/wP6/PsD/Pz/g/t8+AAAAAMD+vz4AAAAAxI9DP53MHD7Ixkc/zYDMO7D/Lz/A/z8/oP8fP8D/Pz+w/y8/AAAAAKD/Hz8AAAAAyMZHP7qYOT7A/D8+wP8/PwD5/z3A/z8/wPw/PgAAAAAA+f89AAAAAA=="),
+"format": 34359742487,
+"index_count": 72,
+"index_data": PackedByteArray("AAACAAEAAwAFAAQABQAGAAQABwAJAAgAAQACAAoACwANAAwADQAOAAwADwAJAAcACgACABAAEQATABIAEwAUABIAFQAJAA8AEAACABYAFwAZABgAGQAaABgAGwAJABUAFgACABwAHQAfAB4AHwAgAB4AIQAJABsAHAACAAAAIgAkACMAJAAlACMACAAJACEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("XH8DPS+LEr74r9494GtnPd18Er7zIok9AAAHtVK4Hr6O/3894GtnPd18Er7zIok9XH8DPS+LEr74r9494GtnPTefJD/zIok9XH8DPcyiJD/4r9494GtnPTefJD/zIok9XH8DPcyiJD/4r949AAAHtRSuJz+O/389RH8DPTKLEr4OQIU8RH8DPTKLEr4OQIU84GtnPd18Er7zIok9RH8DPcyiJD8OQIU84GtnPTefJD/zIok9RH8DPcyiJD8OQIU8/kvGvCyLEr4SVkA8/kvGvCyLEr4SVkA8RH8DPTKLEr4OQIU8/kvGvMuiJD8SVkA8RH8DPcyiJD8OQIU8/kvGvMuiJD8SVkA8pWtnved8Er6euG09pWtnved8Er6euG09/kvGvCyLEr4SVkA8pWtnvTqfJD+duG09/kvGvMuiJD8SVkA8pWtnvTqfJD+duG09moADvSqLEr7ur949moADvSqLEr7ur949pWtnved8Er6euG09moADvcqiJD/ur949pWtnvTqfJD+duG09moADvcqiJD/ur949XH8DPS+LEr74r949moADvSqLEr7ur949XH8DPcyiJD/4r949moADvcqiJD/ur949AIABAP7//78AgAEA/v//vwCAAQD+//+/tND/f/7/Wei00P9//v9Z6LTQ/3/+/1notND/f/7/Wej/f/3//v//v/9//f/+//+//3/9//7//78AgAEA/v//v/7/Sa8AAFro/v9JrwAAWuj+/0mvAABa6P7/Sa8AAFro/3/9//7//78AgAEA/v//v/7/AAAAAP+//v8AAAAA/7/+/wAAAAD/v/7/AAAAAP+//3/9//7//78AgAEA/v//vwAAtVC2UP+/AAC1ULZQ/78AALVQtlD/vwAAtVC2UP+//3/9//7//78AgAEA/v//v0ov/39Jr/+/Si//f0mv/79KL/9/Sa//v0ov/39Jr/+//3/9//7//7/9f/9//f//v/1//3/9//+//X//f/3//7/9f/9//f//vw==")
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xc3u4"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 15.0
+initial_velocity_max = 0.95
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_noise_strength = 14.47
+turbulence_noise_scale = 8.535
+turbulence_noise_speed = Vector3(4.395, 4.58, 2.835)
+turbulence_noise_speed_random = 1.42
+turbulence_influence_min = 0.046
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt0xi"]
+transparency = 4
+shading_mode = 0
+albedo_texture = ExtResource("9_xaf4a")
+uv1_triplanar_sharpness = 7.99999
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+grow_amount = 11.027
+
+[sub_resource type="QuadMesh" id="QuadMesh_wpa64"]
+material = SubResource("StandardMaterial3D_rt0xi")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5suy4"]
 radius = 0.4
@@ -56,7 +112,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.533333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector3(0.125543, -2.49533, 0.169353), Vector3(1.34929, -0.617615, 1.91294), Vector3(1.15645, 0.179893, 2.70857), Vector3(0.125543, -2.49533, 0.169353)]
 }
 tracks/1/type = "value"
@@ -68,7 +124,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.533333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector3(0.774068, -0.283909, -0.572241), Vector3(0.852582, 0.0589017, -0.572241), Vector3(0.876373, 0.162779, -0.572241), Vector3(0.774068, -0.283909, -0.572241)]
 }
 
@@ -105,6 +161,22 @@ visible = false
 
 [node name="beer" parent="Camera/gun/sniper" instance=ExtResource("7_oli80")]
 transform = Transform3D(-0.799627, 0.0602303, -0.597467, 0.167218, 0.977937, -0.125213, 0.576743, -0.200032, -0.792057, 0.772511, -0.29071, -0.572241)
+
+[node name="Cigarrette" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(0.191524, 0.0569486, -0.00867673, 0, -0.0301245, -0.197718, -0.0576058, 0.189339, -0.0288479, -0.0569838, -0.0858011, -0.249109)
+material_override = SubResource("StandardMaterial3D_7b0cm")
+mesh = ExtResource("9_es6qe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera/Cigarrette"]
+material_override = SubResource("StandardMaterial3D_mdkxv")
+mesh = SubResource("ArrayMesh_lm6gd")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera/Cigarrette"]
+transform = Transform3D(0.361911, 0.232554, -0.902739, -0.766518, -0.476884, -0.43015, -0.530535, 0.847643, 0.00566701, 0.0269316, -0.0885189, 0.0134869)
+cast_shadow = 0
+process_material = SubResource("ParticleProcessMaterial_xc3u4")
+draw_pass_1 = SubResource("QuadMesh_wpa64")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
