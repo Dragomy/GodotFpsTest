@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1artwran85i6"]
+
+[ext_resource type="Script" path="res://weapons/projectiles/bullet.gd" id="1_ps6aj"]
+[ext_resource type="Texture2D" uid="uid://bk7qvkmtbdewp" path="res://materials/textures/bullet.png" id="2_nvtup"]
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_ps6aj")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.5
+
+[node name="BulletSprite" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0851045, 0, 0.492704, 0, 0.5, 0, -0.492704, 0, -0.0851045, 0, 0, 0)
+gi_mode = 2
+texture_filter = 2
+texture = ExtResource("2_nvtup")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
